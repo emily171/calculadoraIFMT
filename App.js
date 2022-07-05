@@ -26,9 +26,20 @@ export default function App() {
     if (operacao == '+') {
       setDadosVisor(valor1 + Number(dadosVisor));
     }
+    if (operacao == '-') {
+      setDadosVisor(valor1 - Number(dadosVisor));
+    }
+    if (operacao == '/') {
+      setDadosVisor(valor1 / Number(dadosVisor));
+    }
+    if (operacao == '*') {
+      setDadosVisor(valor1 * Number(dadosVisor));
+    }
+    
   }
 
   return (
+
     <View style={styles.container}>
       
       <TextInput style={styles.estilo_visor}
@@ -96,9 +107,37 @@ export default function App() {
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.botao_num}
+          onPress={() => configOperacao('-')}>
+          <Text style={styles.texto_botao}>-</Text>
+        </TouchableOpacity>
+
+        
+      </View>
+
+      <View style={styles.view_linha}>
+
+        <TouchableOpacity style={styles.botao_num}
+          onPress={() => addNumeroAoVisor('0')}>
+          <Text style={styles.texto_botao}>0</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.botao_num}
+          onPress={() => configOperacao('/')}>
+          <Text style={styles.texto_botao}>/</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.botao_num}
+          onPress={() => configOperacao('*')}>
+          <Text style={styles.texto_botao}>*</Text>
+        </TouchableOpacity>
+
+
+
+        <TouchableOpacity style={styles.botao_num}
           onPress={() => executarOperacao()}>
           <Text style={styles.texto_botao}>=</Text>
         </TouchableOpacity>
+
       </View>
 
       <StatusBar style="auto" />
@@ -109,7 +148,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#f9eee2',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -141,4 +180,5 @@ const styles = StyleSheet.create({
   texto_botao: {
     fontSize: 25,
   },
+  
 });
